@@ -8,9 +8,14 @@ use mvc\core\validation;
 use mvc\models\user;
 class usercontroller extends controller {
 
+public function __construct()
+{
+    new session;
+}
+
+
 public function profile()
     {
-        new session;
         $user = new user;
         $data=$user->select_all_users();
         
@@ -21,7 +26,6 @@ public function profile()
 public function insert_user(){
 
     new validation ;
-    new session ;
     new handel;
     new user;
     if ($_SERVER['REQUEST_METHOD'] === "POST" && isset($_POST['submit'])) {
@@ -59,7 +63,6 @@ public function insert_user(){
         
         
         public function login(){
-            new session;
             $model= new user;
           $email =  $_POST['email'];
           $password =  $_POST['password'];
@@ -83,7 +86,6 @@ public function insert_user(){
         }
 
         public function logout(){
-            new session;
             if(session::get('user')){
                 session::stop();
                 header("location: ../home/login");

@@ -8,9 +8,13 @@ use mvc\core\session;
 
 class homecontroller extends controller{
     
-    function index()
+    public function __construct()
     {
         new session;
+    }
+    
+    function index()
+    {
         $name=session::get('user');
         $this->get_view("home/index",["title"=>"Home page","message"=>"Welcome ","name"=>$name]);
         
@@ -18,7 +22,6 @@ class homecontroller extends controller{
 
     function register()
     {
-        new session;
         $error_all = handel::showerror("all");
         $error_email = handel::showerror("email");    
         $error_name = handel::showerror("name");
@@ -31,7 +34,6 @@ class homecontroller extends controller{
     
     function Login()
     {
-        new session;
         $error=handel::showerror('login');
         $this->get_view("home/login",["title"=>"Login",'error'=>$error]);
         

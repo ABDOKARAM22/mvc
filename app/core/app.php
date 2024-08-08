@@ -29,7 +29,7 @@ class app {
     }
 
     private function render(){
-        $controller="mvc\controllers\\".$this->controller;
+        $controller="mvc\\controllers\\".$this->controller;
 
         if(class_exists($controller)){
             $controller=new $controller; 
